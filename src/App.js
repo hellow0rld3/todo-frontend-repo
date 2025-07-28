@@ -16,14 +16,14 @@ function App() {
   }, []);
 
   function getTasks() {
-    axios.get('http://localhost:8080/api/tasks')
+    axios.get('https://todo-backend-repo-production.up.railway.app/api/tasks')
       .then(res => setTasks(res.data))
       .catch(err => console.log(err));
   }
 
   function addTask() {
     if (!title) return;
-    axios.post('http://localhost:8080/api/tasks', {
+    axios.post('https:todo-backend-repo-production.up.railway.app/api/tasks', {
       title: title,
       description: description
     })
@@ -36,19 +36,19 @@ function App() {
   }
 
   function deleteTask(id) {
-    axios.delete(`http://localhost:8080/api/tasks/${id}`)
+    axios.delete(`https://todo-backend-repo-production.up.railway.app/api/tasks/${id}`)
       .then(() => getTasks());
   }
 
   function toggleTask(id) {
-    axios.patch(`http://localhost:8080/api/tasks/${id}/toggle`)
+    axios.patch(`https://todo-backend-repo-production.up.railway.app/api/tasks/${id}/toggle`)
       .then(() => getTasks());
   }
 
   function clearDone() {
     const doneTasks = tasks.filter(t => t.done);
     doneTasks.forEach(t => {
-      axios.delete(`http://localhost:8080/api/tasks/${t.id}`)
+      axios.delete(`https://todo-backend-repo-production.up.railway.app/api/tasks/${t.id}`)
         .then(() => getTasks());
     });
   }
@@ -61,7 +61,7 @@ function App() {
 
   function saveEdit() {
     if (!editTitle) return;
-    axios.put(`http://localhost:8080/api/tasks/${editingTask}`, {
+    axios.put(`https://todo-backend-repo-production.up.railway.app/api/tasks/${editingTask}`, {
       title: editTitle,
       description: editDescription,
       done: tasks.find(t => t.id === editingTask).done
