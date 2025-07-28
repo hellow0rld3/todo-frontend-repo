@@ -23,7 +23,7 @@ function App() {
 
   function addTask() {
     if (!title) return;
-    axios.post('https:todo-backend-repo-production.up.railway.app/api/tasks', {
+    axios.post('https://todo-backend-repo-production.up.railway.app/api/tasks', {
       title: title,
       description: description
     })
